@@ -1,0 +1,94 @@
+{# templates/review_and_generate_pdf.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+            <form action="{{ path('add') }}" method="post">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">First Name:</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="FirstName" class="form-control" value="{{ dataFromForm1.firstName }}" readonly>
+                    </div>
+
+                    <label class="col-sm-2 col-form-label">Last Name:</label>
+                    <div class="col-sm-4">
+                        <input type="text"  name="LastName" class="form-control" value="{{ dataFromForm1.lastName }}" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Birth DATE:</label>
+                    <div class="col-sm-4">
+                          <input type="text" name="BirthtDate" class="form-control" value="{{ dataFromForm1.BirthDate|date('Y-m-d')}}" readonly>
+                    </div>
+
+                    <label class="col-sm-2 col-form-label">Place of Birth:</label>
+                    <div class="col-sm-4">
+      <input type="text" class="form-control"  name="PlaceofBirth" value="{{ dataFromForm1.PlaceofBirth }}" readonly>
+                    </div>
+                </div>
+                 <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">DEBUT DATE:</label>
+                    <div class="col-sm-4">
+                          <input type="text" name="DebutDate" class="form-control" value="{{ dataFromForm1.DebutDate|date('Y-m-d') }}" readonly>
+                    </div>
+
+                    <label class="col-sm-2 col-form-label">END DATE:</label>
+                    <div class="col-sm-4">
+      <input type="text" class="form-control"  name="EndDate" value="{{ dataFromForm1.EndDate|date('Y-m-d') }}" readonly>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Profil:</label>
+                    <div class="col-sm-4">
+                        <input type="text"  name="Profil" class="form-control" value="{{ dataFromForm2.Profil }}" readonly>
+                    </div>
+                </div>
+
+                    <div class="form-group mt-3">
+                           <button type="button"  class="btn btn-secondary-custom" onclick="goToPreviousPage()">Previous</button>
+                           <button  id="submitform" type="submit" class="btn btn-custom">Submit</button>
+                  
+                    </div>
+                </form>
+                <form action="{{ path('generate_pdf') }}" method="get">
+                    <div class="form-group mt-3">
+                   
+                           <button type="submit" class="btn btn-custom">Generate Certificate</button>
+                    </div>
+                </form>
+                 
+
+            </div>
+        </div>
+    </div>
+      <script>
+        function goToPreviousPage() {
+        
+          
+             window.history.back();
+        }
+    </script>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Custom button color */
+        .btn-custom {
+            background-color: #ee3d26;
+            border-color: #ee3d26;
+            color: #fff;
+        }
+
+        .btn-secondary-custom {
+            background-color: #777777;
+            border-color: #777777;
+            color: #fff;
+        }
+    </style>
+{% endblock %}

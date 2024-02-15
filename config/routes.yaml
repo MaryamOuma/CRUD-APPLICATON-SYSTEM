@@ -3,3 +3,44 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+default:
+    path: /
+    controller: App\Controller\DefaultController::index
+    
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register 
+
+   
+   
+app_agent:
+    path: /agent
+    controller: App\Controller\AgentController::index
+app_profil:
+    path: /profil
+    controller: App\Controller\ProfilController::index
+pdf_generation:
+    path: /pdf-generation
+    controller: App\Controller\PdfGenerationController::pdfGenerationPage
+    methods: ['GET']
+pdf_review:
+    path: /review
+    controller: App\Controller\PdfController::reviewPdf
+generate_pdf:
+    path: /generate-pdf
+    controller: App\Controller\PdfController::generatePdf
+    methods: ['GET']
+add:
+    path: /add
+    controller: App\Controller\DefaultController::add
+    methods: ['POST']
+delete_certificate:
+    path: /delete
+    controller: App\Controller\DefaultController::delete
+    methods: ['GET']
+
+generate_attestation:
+    path: /pdf
+    controller: App\Controller\DefaultController::pdf
+    methods: ['GET']
+

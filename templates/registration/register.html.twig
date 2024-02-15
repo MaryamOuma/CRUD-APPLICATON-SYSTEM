@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container pt-5">
+        {# Update the form action and method to point to the Symfony route #}
+        <form action="{{ path('app_register') }}" method="POST">
+            {# Include the CSRF token for security #}
+            {{ form_widget(registrationForm._token) }}
+
+            <div class="form-group">
+                <label for="registrationForm_email">Email address</label>
+                {# Update the field name to match your form type #}
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter email'}}) }}
+                {# Display any validation errors for the email field #}
+                {{ form_errors(registrationForm.email) }}
+            </div>
+
+            <div class="form-group">
+                <label for="registrationForm_plainPassword">Password</label>
+                {# Update the field name to match your form type #}
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Password'}}) }}
+                {# Display any validation errors for the plainPassword field #}
+                {{ form_errors(registrationForm.plainPassword) }}
+            </div>
+
+            <div class="form-group form-check">
+                {# Update the field name to match your form type #}
+                {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                <label class="form-check-label" for="registrationForm_agreeTerms">Check me out</label>
+                {# Display any validation errors for the agreeTerms field #}
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock %}

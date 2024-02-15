@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Attestation</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <style>
+            body {
+                text-align: center;
+            }
+
+            h1 {
+                margin-top: 50px; /* Adjust as needed */
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            li {
+                margin-bottom: 10px; /* Adjust as needed */
+            }
+
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 70vh; /* Adjust as needed */
+            }
+
+            h3 {
+              
+               
+                left: 10px;
+            }
+
+            .signature {
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+           
+            <h1 class="mt-5">Attestation De Travail</h1>
+            <h3>Objet : attestation de travail de  Monsieur/Madame  {{ certificate.firstName }} {{ certificate.lastName }}</h3>
+            <h3> Madame/Monsieur,</h3>
+
+            <div class="center mt-5">
+                <div>
+                    <p>Je soussigné(e), « Madame/Monsieur » « Nom et Prénom du représentant », représentant de la société « Nom de la société/dénomination sociale de la société », établie au « adresse du siège social » et immatriculée sous le numéro « numéro d’immatriculation de la société (SIRET/Urssaf…) », atteste et certifie que  Madame/Monsieur {{ certificate.firstName }} {{ certificate.lastName }}, né(e) le « date de naissance du salarié » à « lieu de naissance du salarié » et demeurant au « adresse du salarié » est employé en tant que {{ certificate.position }} au sein de notre société.</p>
+                    
+
+                   
+                </div>
+            </div>
+           
+            <div class="signature mt-5">
+                 <div class="date">Le: {{ "now"|date("d-m-Y") }}</div>
+                <p>Signature: ____________________</p>
+            </div>
+        </div>
+
+       
+    </body>
+    </html>
+{% endblock %}

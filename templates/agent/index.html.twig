@@ -1,0 +1,65 @@
+{# templates/agent/multi_step_form.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5 mb-5">
+        <div class="card">
+            <div class="card-body">
+
+           
+                        <form method="post" action="{{ path('app_agent') }}">
+
+                            {# Render each form field with Bootstrap styling #}
+                            <div class="mb-3">
+                                {{ form_label(form.firstName, 'First Name', {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(form.firstName) }}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_label(form.lastName, 'Last Name', {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(form.lastName) }}
+                            </div>
+                             <div class="mb-3">
+                                {{ form_label(form.DebutDate, 'Debut Date', {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(form.DebutDate) }}
+                            </div>
+                             <div class="mb-3">
+                                {{ form_label(form.EndDate, 'End Date', {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(form.EndDate) }}
+                            </div>
+                              <div class="mb-3">
+                                {{ form_label(form.BirthDate, 'Birth Date', {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(form.BirthDate) }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_label(form.PlaceofBirth,'Place of Birth', {'label_attr': {'class': 'form-label'}}) }}
+                                {{ form_widget(form.PlaceofBirth) }}
+                            </div>
+
+                            {# Submit button with Bootstrap styling #}
+                            <button type="submit" class="btn btn-custom">Next</button>
+                 
+                        </form>
+                 
+               
+
+            </div>
+        </div>
+    </div>
+
+  
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Custom button color */
+        .btn-custom {
+            background-color: #ee3d26;
+            border-color: #ee3d26;
+            color:#fff;
+          
+        }
+
+       
+    </style>
+{% endblock %}
