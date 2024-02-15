@@ -76,6 +76,8 @@ class DefaultController extends AbstractController
     $entityManager->remove($certificate);
     $entityManager->flush();
 
+    $this->addFlash('success', 'Record successfully deleted!');
+
     // Redirect or return a response as needed
     return $this->redirectToRoute('default');
              

@@ -29,11 +29,12 @@ class AgentController extends AbstractController
            // dump($formData);
            $formData = $form->getData();
            $session->set('form1_data', $formData);
+           return $this->redirectToRoute('app_profil');
 
-            // You can redirect or return a response as needed
-            return $this->redirectToRoute('app_profil');
         }
 
+            // You can redirect or return a response as needed
+           
         // Render the template with the form
         return $this->render('agent/index.html.twig', [
             'form' => $form->createView(),

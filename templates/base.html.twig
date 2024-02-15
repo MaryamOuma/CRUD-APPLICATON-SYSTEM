@@ -6,15 +6,23 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
     
     {# Include Bootstrap CSS link #}
+   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+     <link rel="stylesheet" href="{{ asset('build/app.css') }}">
     {% block stylesheets %}
     {% endblock %}
 </head>
 <body>
     {% block body %}
        <div class="container pt-5">
+    {# Display flash messages with Tailwind styling #}
+        {% for flashMessage in app.flashes('success') %}
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
     <a href="{{ path('app_agent') }}" class="btn btn-primary">Add New</a>
 
       </div>
@@ -26,7 +34,7 @@
                     <th>FirstName</th>
                      <th>LastName</th>
                    <th>Birth Date</th>
-                      <th>Place of birth</th>
+                    <th>Place of birth</th>
                      <th>Debut Date</th>
                       <th>End Date</th>
                         <th>Position</th>
@@ -54,7 +62,7 @@
                     <input type="hidden" name="certificateId" value="{{ certificate.id }}">
                       <button class="btn"><i class="fa fa-download"></i></button>
                     </form>
-                     <a href="{{ path('delete_certificate', {'id': certificate.id}) }}" onclick="return confirm('Are you sure?')"><button type="button" class="btn btn-danger">Delete</button></a>
+                     <a href="{{ path('delete_certificate', {'id': certificate.id}) }}" onclick="return confirm('Are you sure?')"><button type="button" class="inline-block rounded bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]">Delete</button></a>
                     </td>
                    
                 </tr>
