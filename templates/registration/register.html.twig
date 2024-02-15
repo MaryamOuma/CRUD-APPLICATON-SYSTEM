@@ -4,6 +4,11 @@
 
 {% block body %}
     <div class="container pt-5">
+  <div class="row">
+         <div class="col-md-6">
+            <a href="{{ path('app_login') }}" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto">Login</a>
+        </div>
+    </div>
         {# Update the form action and method to point to the Symfony route #}
         <form action="{{ path('app_register') }}" method="POST">
             {# Include the CSRF token for security #}
@@ -33,7 +38,7 @@
                 {{ form_errors(registrationForm.agreeTerms) }}
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
         </form>
     </div>
 {% endblock %}
